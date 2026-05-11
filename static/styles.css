@@ -1,0 +1,352 @@
+/*Theme variables for light mode */
+:root {
+    --bg-color: #f4f6f8;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --nav-color: #2980b9;
+    --nav-hover: #1f618d;
+    --heading-color: #2c3e50;
+    --subheading-color: #34495e;
+
+    --table-header: #2c3e50;
+    --table-row-alt: #f2f2f2;
+
+    --btn-primary: #2ea8ba;
+    --btn-hover: #555555;
+    --btn-open: #3498db;
+    --btn-edit: #f39c12;
+    --btn-delete: #e74c3c;
+    --btn-add: #27ae60;
+
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+
+    --header-bg: #eaeaea;
+}
+
+/* For dark mode */
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #eaeaea;
+    --card-bg: #2c2c2c;
+    --nav-color: #5dade2;
+    --nav-hover: #85c1e9;
+    --heading-color: #ecf0f1;
+    --subheading-color: #bdc3c7;
+
+    --table-header: #4b4b4b;
+    --table-row-alt: #2a2a2a;
+
+    --btn-primary: #2ea8ba;
+    --btn-hover: #888;
+    --btn-open: #5dade2;
+    --btn-edit: #f5b041;
+    --btn-delete: #ec7063;
+    --btn-add: #58d68d;
+
+    --input-bg: #333;
+    --input-border: #555;
+
+    --header-bg: #2a2a2a;
+}
+
+body {
+    font-family: Verdana, Tahoma, sans-serif;
+    margin: 0px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+main {
+    margin: 40px;
+}
+
+/* Title w/ gradient */
+#title {
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 400;
+
+    background: linear-gradient(90deg, rgb(6, 0, 189), rgb(0, 255, 85));
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 {
+    color: var(--heading-color);
+}
+
+h2 {
+    color: var(--subheading-color);
+}
+
+h3 {
+    margin-top: 30px;
+    color: var(--heading-color);
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: var(--nav-color);
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    color: var(--nav-hover);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: var(--card-bg);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+a {
+    color: var(--nav-color);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form styles */
+form {
+    margin-top: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 6px;
+    width: 250px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+select {
+    margin-bottom: 10px;
+    padding: 6px;
+    width: 250px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--table-header);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-row-alt);
+}
+
+/* Buttons */
+.btn {
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background-color: var(--btn-primary);
+}
+
+.btn-open {
+    background-color: var(--btn-open);
+}
+
+.btn-edit {
+    background-color: var(--btn-edit);
+}
+
+.btn-delete {
+    background-color: var(--btn-delete);
+}
+
+.btn-add {
+    background-color: var(--btn-add);
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* Create button */
+a[href*="create"] {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background-color: var(--btn-add);
+    color: white;
+    border-radius: 5px;
+}
+
+a[href*="create"]:hover {
+    opacity: 0.85;
+}
+
+#theme-toggle {
+    margin-bottom: 10px;
+}
+
+
+.copyright_subtitle {
+    color: #c9a400;
+    font-weight: bold;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#theme-toggle {
+    margin-left: 20px;
+}
+
+header {
+    background-color: var(--header-bg);
+
+    background: rgba(234, 234, 234, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    padding: 5px 25px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+[data-theme="dark"] header {
+    background: rgba(42, 42, 42, 0.7);
+}
+
+/* Console grouping styles */
+.console-group {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    line-height: 1.8;
+}
+
+.console-group strong {
+    font-weight: bold;
+    color: var(--heading-color);
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.emulator-list {
+    display: inline;
+}
+
+.btn-emulator-link {
+    display: inline;
+    padding: 4px 8px;
+    margin: 0 2px;
+    text-decoration: none;
+    background-color: var(--btn-open);
+    color: white;
+    font-size: 13px;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+}
+
+.btn-emulator-link:hover {
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+.no-emulator {
+    color: #999;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.company-name {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--nav-color);
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* First company name should have less top margin */
+.company-name:first-of-type {
+    margin-top: 5px;
+}
+
+/* Checkbox list styling */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* spacing between box and text */
+    margin-bottom: 7px;
+    margin-top: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    background: var(--card-bg);
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: background 0.2s;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.checkbox-item span {
+    line-height: 1.2;
+}
+
+.checkbox-item:hover {
+    background: var(--table-row-alt);
+}
