@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if emulator else 'Create' }} Emulator{% endblock %}
+
+{% block content %}
+<h2>{{ 'Edit' if emulator else 'Create' }} Emulator</h2>
+<form method="post">
+    <input type="text" name="name" placeholder="Name" value="{{ emulator.name if emulator else '' }}" required>
+    <input type="text" name="link" placeholder="Website" value="{{ emulator.link if emulator else '' }}" required>
+    <input type="text" name="year" placeholder="Year" value="{{ emulator.year if emulator else '' }}">
+    
+    <br>
+    <label>Select Compatible Consoles:</label>
+    <br>
+    
+    {% for console in consoles %}
+        <label class="checkbox-item">
+            <input type="checkbox" 
+                name="console_ids" 
+                value="{{ console.console_id }}"
+                {% if console.console_id in current_console_ids %}checked{% endif %}>
+            <span>{{ console.name }}</span>
+        </label>
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-add">{{ 'Update' if emulator else 'Create' }}</button>
+</form>
+{% endblock %}

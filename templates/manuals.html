@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Manuals{% endblock %}
+
+{% block content %}
+<h2>Manuals</h2>
+
+<a href="{{ url_for('create_manual') }}" class="btn btn-add">Add New Manual</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Language</th>
+            <th>ROM Link</th>
+            <th>PDF</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for m in manuals %}
+        <tr>
+            <td>{{ m.title }}</td>
+            <td>{{ m.language }}</td>
+            <td><a href="{{ m.rom_link }}" target="_blank" class="btn btn-open">Open</a></td>
+            <td><a href="{{ m.pdf_link }}" target="_blank" class="btn btn-open">Open</a></td>
+            <td>
+                <a href="{{ url_for('edit_manual', manual_id=m.manual_id) }}" class="btn btn-edit">Edit</a>
+                <form action="{{ url_for('delete_manual', manual_id=m.manual_id) }}" method="post" class="inline" onsubmit="return confirm('Delete this manual?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

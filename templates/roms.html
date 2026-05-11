@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>ROMs</h2>
+
+<!-- Filters -->
+<a href="{{ url_for('create_rom') }}" class="btn btn-add">Add a ROM</a>
+
+<form method="get" class="filter-form">
+    <input type="text" name="title" placeholder="Title" value="{{ request.args.title }}">
+    <input type="text" name="year" placeholder="Year" value="{{ request.args.year }}">
+    <input type="text" name="genre" placeholder="Genre" value="{{ request.args.genre }}">
+    <input type="text" name="publisher" placeholder="Publisher" value="{{ request.args.publisher }}">
+    <input type="text" name="region" placeholder="Region" value="{{ request.args.region }}">
+    <button type="submit" class="btn">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Publisher</th>
+            <th>Region</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for rom in roms %}
+        <tr>
+            <td>{{ rom.title }}</td>
+            <td>{{ rom.year }}</td>
+            <td>{{ rom.genre }}</td>
+            <td>{{ rom.publisher }}</td>
+            <td>{{ rom.region }}</td>
+            <td><a href="{{ rom.link }}" target="_blank" class="btn btn-open">Open</a>
+                <a href="{{ url_for('edit_rom', rom_id=rom.rom_id) }}" class="btn btn-edit">Edit</a>
+                <form action="{{ url_for('delete_rom', rom_id=rom.rom_id) }}" method="post" class="inline" onsubmit="return confirm('Delete this ROM?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

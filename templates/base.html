@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ultimate Retro Game Archive{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+    <h1 id="title">Ultimate Retro Game Archive</h1>
+
+    <div class="top-bar">
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('consoles') }}">Consoles</a>
+            <a href="{{ url_for('emulators') }}">Emulators</a>
+            <a href="{{ url_for('roms') }}">ROMs</a>
+            <a href="{{ url_for('manuals') }}">Manuals</a>
+        </nav>
+
+        <button id="theme-toggle" class="btn">Dark Mode</button>
+    </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <style>
+        /* Keep forms inline for delete buttons inside tables */
+        form.inline {
+            display: inline;
+        }
+
+        /* spacing for filter forms */
+        .filter-form {
+            margin-bottom: 15px;
+        }
+
+        /* Small icons inside table headers */
+        th .header-icon {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById("theme-toggle");
+
+            if (!toggleBtn) return;
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+                toggleBtn.textContent = "Light Mode";
+            }
+
+            toggleBtn.addEventListener("click", () => {
+                const current = document.documentElement.getAttribute("data-theme");
+
+                if (current === "dark") {
+                    document.documentElement.removeAttribute("data-theme");
+                    localStorage.setItem("theme", "light");
+                    toggleBtn.textContent = "Dark Mode";
+                } else {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                    localStorage.setItem("theme", "dark");
+                    toggleBtn.textContent = "Light Mode";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

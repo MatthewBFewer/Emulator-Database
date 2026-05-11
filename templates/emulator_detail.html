@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ emulator.name }} Details{% endblock %}
+
+{% block content %}
+<h2>{{ emulator.name }} ({{ emulator.year }})</h2>
+<a href="{{ emulator.link }}" target="_blank" class="btn btn-open">Open Official Site</a>
+<a href="{{ url_for('edit_emulator', emulator_id=emulator.emulator_id) }}" class="btn btn-edit">Edit Emulator</a>
+
+<h3>Compatible Consoles</h3>
+
+{% if consoles %}
+    <ul>
+        {% for c in consoles %}
+            <li>{{ c.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>(No consoles linked)</p>
+{% endif %}
+
+<h3>Compatible ROMs</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Publisher</th>
+            <th>Region</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for rom in roms %}
+        <tr>
+            <td>{{ rom.title }}</td>
+            <td>{{ rom.year }}</td>
+            <td>{{ rom.genre }}</td>
+            <td>{{ rom.publisher }}</td>
+            <td>{{ rom.region }}</td>
+            <td><a href="{{ rom.link }}" target="_blank" class="btn btn-open">Open</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

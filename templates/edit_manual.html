@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if manual else 'Create' }} Manual{% endblock %}
+
+{% block content %}
+<h2>{{ 'Edit' if manual else 'Create' }} Manual</h2>
+<form method="post">
+    <input type="text" name="title" placeholder="Title" value="{{ manual.title if manual else '' }}">
+    <input type="text" name="language" placeholder="Language" value="{{ manual.language if manual else '' }}">
+    <input type="text" name="rom_link" placeholder="ROM Link" value="{{ manual.rom_link if manual else '' }}">
+    <input type="text" name="pdf_link" placeholder="PDF Link" value="{{ manual.pdf_link if manual else '' }}">
+    <button type="submit" class="btn btn-add">{{ 'Update' if manual else 'Create' }}</button>
+</form>
+{% endblock %}

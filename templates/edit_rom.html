@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if rom else 'Create' }} ROM{% endblock %}
+
+{% block content %}
+<h2>{{ 'Edit' if rom else 'Create' }} ROM</h2>
+<form method="post">
+    <input type="text" name="title" placeholder="Title" value="{{ rom.title if rom else '' }}">
+    <input type="text" name="year" placeholder="Year" value="{{ rom.year if rom else '' }}">
+    <input type="text" name="genre" placeholder="Genre" value="{{ rom.genre if rom else '' }}">
+    <input type="text" name="publisher" placeholder="Publisher" value="{{ rom.publisher if rom else '' }}">
+    <input type="text" name="region" placeholder="Region" value="{{ rom.region if rom else '' }}">
+    <input type="text" name="link" placeholder="Link" value="{{ rom.link if rom else '' }}" required>
+    <button type="submit" class="btn btn-add">{{ 'Update' if rom else 'Create' }}</button>
+</form>
+{% endblock %}

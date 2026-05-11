@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% set ns = namespace(last_company=None) %}
+
+{% for console in consoles %}
+    
+    {% if console.company != ns.last_company %}
+        <h3 class="company-name">{{ console.company }}</h3>
+        {% set ns.last_company = console.company %}
+    {% endif %}
+
+    <div class="console-group">
+        <strong>{{ console.console }}:</strong>
+        
+        {% if console.emulator_names %}
+            <span class="emulator-list">
+                {% set emulator_names = console.emulator_names.split(',') %}
+                {% set emulator_ids = console.emulator_ids.split(',') %}
+                {% for i in range(emulator_names|length) %}
+                    <a class="btn btn-emulator-link" href="{{ url_for('emulator_detail', emulator_id=emulator_ids[i]) }}">
+                        {{ emulator_names[i].strip() }}
+                    </a>
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </span>
+        {% else %}
+            <span class="no-emulator">(No emulator linked)</span>
+        {% endif %}
+    </div>
+
+{% endfor %}
+
+{% endblock %}
