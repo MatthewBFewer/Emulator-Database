@@ -1,4 +1,4 @@
-# flask's builtin support for SQLite makes it a viable choice
+# backend
 
 from flask import flash, Flask, render_template, request, redirect, url_for
 import sqlite3
@@ -37,7 +37,7 @@ def get_db_connection():
     conn.execute("PRAGMA foreign_keys = ON") #enforces foreign key correctness
     return conn
 
-# Initialize DB (this isnt called anymore, it was just used for testing)
+# Initialize DB (this isnt called, it is just used for testing)
 def init_db():
     with get_db_connection() as conn:
         for file in ("create_tables.sql", "populate_tables.sql"):
